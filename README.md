@@ -1,2 +1,2 @@
 # Character_Profiles
-Wiki style character profiles
+Character Profiles in the style of a wiki page
