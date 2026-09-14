@@ -1,0 +1,79 @@
+body{
+    background-image: url(Images/ink\ splat\ background.png);
+    background-repeat: space;
+    margin: auto;
+}
+
+.main-container{
+    margin: auto;
+    max-width: 50%;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.inner-container{
+    background-color: rgb(255, 255, 255);
+    width: 300px;
+    height: 250px;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 30px;
+    
+}
+
+.character-image{
+    max-width: 250px;
+    max-width: 250px;
+}
+
+p{
+    color: white;
+    font-size: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+
+.finn-select{
+    background-color: blueviolet;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    cursor: pointer;
+    background-image: url("Images/ink\ wave\ pink.png");
+    background-repeat: repeat-y;
+
+    background-position: 0 150%;
+    transition: background-position 0.8s ease;
+}
+.finn-select:hover{
+    background-position: 0% -130%;
+}
+
+/*
+color: #eb49ff;
+color: #f8cd2d;
+*/
+
+.dylan-select{
+    background-color: darkorange;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    cursor: pointer;
+    background-image: url("Images/ink\ wave\ yellow.png");
+    background-repeat: repeat-y;
+
+    background-position: 0 150%;
+    transition: background-position 0.8s ease;
+}
+.dylan-select:hover{
+background-position: 0% -130%;
+}

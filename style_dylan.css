@@ -1,0 +1,870 @@
+/* The long section comments in the HTML are intentionally kept as
+   they make the page easier to read and navigate while editing*/
+
+/* ------------------------------------------------------------
+   1. GLOBAL / PAGE
+   ------------------------------------------------------------ */
+
+:root {
+  --amber: #f09c00;
+  --amber-dark: #ca7300;
+  --amber-light: #f4e6fb;
+  --text: #202124;
+  --muted: #6b6b6b;
+  --border: #dddddd;
+  --page: #ffffff;
+  --surface: #fafafa;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  margin: 50px 70px 50px 70px;
+  background: white;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.title-rule {
+  margin: 10px 0 18px;
+  border: 0;
+  border-top: 2px solid var(--border);
+}
+
+.amber-rule {
+  margin: 18px 0 26px;
+  border: 0;
+  border-top: 2px solid var(--amber);
+}
+
+/* ------------------------------------------------------------
+   2. TOP NAVIGATION
+   ------------------------------------------------------------ */
+
+.wiki-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wiki-nav-item {
+  flex: 1 1 150px;
+  max-width: 220px;
+  padding: 0;
+}
+
+.wiki-nav-link {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--amber);
+  color: #ffffff;
+  border-radius: 7px;
+  text-align: center;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.wiki-nav-link:hover,
+.wiki-nav-link.active {
+  background: var(--amber-dark);
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.container > hr:not(.title-rule) {
+  margin: 18px 0 26px;
+  border: 0;
+  border-top: 2px solid var(--amber);
+}
+
+/* ------------------------------------------------------------
+   3. TAB / PAGE SECTIONS
+   ------------------------------------------------------------
+Bootstrap toyhouse version used JavaScript for its clickable tabs. 
+   This version uses 3 radio buttons and CSS. 
+
+   The radio buttons are hidden, while their labels become the
+   clickable wiki-style navigation buttons
+   ------------------------------------------------------------ */
+
+.tab-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wiki-nav-link {
+  cursor: pointer;
+}
+
+.tab-pane {
+  display: none;
+}
+
+#tab-overview:checked ~ .tab-content #Overview,
+#tab-story:checked ~ .tab-content #Story,
+#tab-extras:checked ~ .tab-content #Extras,
+#tab-dialogue:checked ~ .tab-content #Dialogue,
+#tab-gallery:checked ~ .tab-content #Gallery   {
+  display: block;
+}
+
+#tab-overview:checked ~ .wiki-nav .wiki-nav-item:nth-child(1) .wiki-nav-link,
+#tab-story:checked ~ .wiki-nav .wiki-nav-item:nth-child(2) .wiki-nav-link,
+#tab-extras:checked ~ .wiki-nav .wiki-nav-item:nth-child(3) .wiki-nav-link,
+#tab-dialogue:checked ~ .wiki-nav .wiki-nav-item:nth-child(4) .wiki-nav-link,
+#tab-gallery:checked ~ .wiki-nav .wiki-nav-item:nth-child(5) .wiki-nav-link {
+  background: var(--amber-dark);
+}
+
+/* ------------------------------------------------------------
+   4. QUOTE
+   ------------------------------------------------------------ */
+
+.quote-card {
+  width: min(92%, 1050px);
+  margin: 0 auto 28px;
+  padding: 18px 24px;
+  background: var(--amber);
+  color: #ffffff;
+  border: 1px solid var(--amber);
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.quote-card p {
+  margin: 0;
+}
+
+.quote-card .text-right {
+  margin-top: 8px;
+  text-align: right;
+}
+
+/* ------------------------------------------------------------
+   5. INFORMATION BOX
+   ------------------------------------------------------------ */
+
+.info-box-wrap {
+  float: right;
+  width: min(380px, 40%);
+  margin: 0 0 20px 28px;
+}
+
+.info-box-wrap .card {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.card-header,
+.info-header {
+  padding: 12px 16px;
+  background: var(--amber);
+  color: #ffffff;
+  text-align: center;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.empty-tabs {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.image-panel {
+  padding: 18px;
+  text-align: center;
+}
+
+.image-panel-inner {
+  display: block;
+}
+
+.main-character-image {
+  display: block;
+  width: min(75%, 280px);
+  max-height: 450px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.info-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.info-row {
+  padding: 11px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  width: 100%;
+}
+
+.info-label {
+  font-weight: 700;
+}
+
+.info-value {
+  padding-left: 12px;
+}
+
+/* ------------------------------------------------------------
+   6. CONTENTS BOX
+   ------------------------------------------------------------ */
+
+.contents-card,
+.toc-card {
+  width: min(100%, 430px);
+  margin: 24px 0;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.card-body {
+  padding: 0;
+}
+
+.card-body.compact {
+  padding: 0;
+}
+
+.contents-list {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.contents-list li {
+  margin: 4px 0;
+}
+
+.contents-card .amber-link,
+.contents-card a {
+  color: var(--amber);
+}
+
+.contents-toggle {
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.contents-toggle a {
+    display: inline-block;
+}
+
+
+/* ------------------------------------------------------------
+   7. SECTION HEADINGS
+   ------------------------------------------------------------ */
+
+.section-title {
+  margin: 34px 0 4px;
+  font-size: 2rem;
+  line-height: 1.25;
+  font-weight: 400;
+  scroll-margin-top: 24px;
+}
+
+.section-title a,
+.subsection-title a {
+  font-size: 0.75em;
+  color: var(--amber);
+}
+
+.section-rule {
+  margin: 0 0 18px;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.subsection-title {
+  margin: 32px 0 10px;
+  font-size: 1.45rem;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+/* ------------------------------------------------------------
+   8. STORY IMAGES
+   ------------------------------------------------------------ */
+
+.story-figure {
+  width: 250px;
+  max-width: 40%;
+  margin: 8px 18px 14px;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.story-figure-right {
+  float: right;
+}
+
+.story-figure-left {
+  float: left;
+}
+
+.story-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.story-figure figcaption {
+  margin: 7px 4px 2px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   9. TABLES
+   ------------------------------------------------------------ */
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.dialogue-scroll {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.wiki-table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  background: #ffffff;
+}
+
+.etymology-table {
+  width: auto;
+}
+
+.songs-table {
+  min-width: 1100px;
+}
+
+.dialogue-table {
+  width: 100%;
+  min-width: 760px;
+  table-layout: fixed;
+}
+
+.table-head {
+  padding: 12px;
+  border: 1px solid #d4d4d4;
+  background: var(--amber);
+  color: #ffffff;
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-cell {
+  padding: 10px;
+  border: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.songs-table .table-cell,
+.dialogue-table .table-cell {
+  text-align: center;
+}
+
+.language-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.song-cover {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 10%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dialogue-icon {
+  width: 150px;
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+audio {
+  width: 220px;
+  max-width: 100%;
+}
+
+/* ------------------------------------------------------------
+   10. LISTS / TEXT DETAILS
+   ------------------------------------------------------------ */
+
+.trivia-list {
+  margin-top: 30px;
+}
+
+.list-disc {
+  list-style: disc;
+}
+
+.list-circle {
+  list-style: circle;
+}
+
+.list-square {
+  list-style: square;
+}
+
+.light-note {
+  color: #777777;
+}
+
+.amber-accent {
+  color: darkorange;
+}
+
+.splatfest-list {
+  text-align: center;
+  font-size: 15px;
+}
+
+.toc-card {
+  text-align: center;
+}
+
+.toc-item {
+  margin: 0 0 8px;
+}
+
+
+
+/* ------------------------------------------------------------
+   10.2 GALLERY
+   ------------------------------------------------------------ */
+
+.gallery-card {
+  padding: 0 18px 28px;
+}
+
+.gallery-intro,
+.dialogue-intro {
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.gallery-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.gallery-item {
+  margin: 0;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.gallery-item-wide {
+  width: min(88%, 760px);
+}
+
+.gallery-item-medium {
+  width: min(72%, 600px);
+}
+
+.gallery-item-tall {
+  width: min(58%, 480px);
+}
+
+.gallery-item a {
+  display: block;
+  line-height: 0;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.gallery-item figcaption {
+  margin: 9px 5px 1px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   10.3 DIALOGUE
+   ------------------------------------------------------------ */
+
+.dialogue-card {
+  padding: 0 18px 28px;
+}
+
+.dialogue-scene {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 28px auto;
+  width: min(100%, 900px);
+}
+
+.dialogue-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.dialogue-row-left {
+  justify-content: flex-start;
+}
+
+.dialogue-row-right {
+  justify-content: flex-end;
+}
+
+.dialogue-avatar {
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 20%;
+  padding: 5px;
+}
+
+.dialogue-avatar-finn {
+  background: #ebc3ff;
+}
+
+.dialogue-avatar-dylan {
+  background: #ffdca7;
+}
+
+.dialogue-message {
+  width: min(72%, 650px);
+  overflow: hidden;
+  border-radius: 8px;
+  background: #3a3a3a;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.dialogue-name {
+  padding: 5px 12px;
+  background: #666666;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.dialogue-name-finn {
+  color: #c08fff;
+}
+
+.dialogue-name-dylan {
+  color: #ffbc41;
+}
+
+.dialogue-text {
+  padding: 12px 14px 14px;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.separation-bar {
+  width: 100%;
+  height: 8px;
+  margin: 34px 0;
+  border-radius: 999px;
+  background: #dddddd;
+}
+
+/* ------------------------------------------------------------
+   11. FOOTER / CREDITS
+   ------------------------------------------------------------ */
+
+.credit-card {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f7f7f7;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.credit-card a {
+  color: var(--muted);
+}
+
+.credit-card a:hover {
+  color: var(--amber);
+}
+
+/* ------------------------------------------------------------
+   12. CLEAR FLOATS
+   ------------------------------------------------------------ */
+
+#Overview::after,
+#Story::after,
+#Extras::after,
+#Dialogue::after,
+#Gallery::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* ------------------------------------------------------------
+   13. RESPONSIVE LAYOUT
+   ------------------------------------------------------------ */
+
+@media (max-width: 800px) {
+  .container {
+    width: min(100% - 20px, 1180px);
+    padding-top: 20px;
+  }
+
+  .info-box-wrap {
+    float: none;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto 24px;
+  }
+
+  .story-figure {
+    width: 220px;
+    max-width: 45%;
+  }
+
+  .gallery-item-wide {
+    width: 92%;
+  }
+
+  .gallery-item-medium {
+    width: 80%;
+  }
+
+  .gallery-item-tall {
+    width: 68%;
+  }
+
+  .dialogue-message {
+    width: min(78%, 650px);
+  }
+
+  .dialogue-table {
+    table-layout: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 15px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 18px 14px 40px;
+  }
+
+  .wiki-nav-item {
+    flex-basis: calc(50% - 4px);
+    max-width: none;
+  }
+
+  .wiki-nav-link {
+    padding: 9px 8px;
+  }
+
+  .quote-card {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .info-value {
+    padding-left: 0;
+  }
+
+  .story-figure,
+  .story-figure-right,
+  .story-figure-left {
+    float: none;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 12px auto;
+  }
+
+  .gallery-card,
+  .dialogue-card {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .gallery-item-wide,
+  .gallery-item-medium,
+  .gallery-item-tall {
+    width: 100%;
+  }
+
+  .dialogue-row {
+    gap: 8px;
+  }
+
+  .dialogue-avatar {
+    flex-basis: 46px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .dialogue-message {
+    width: calc(100% - 54px);
+  }
+
+  .dialogue-text {
+    padding: 10px 12px 12px;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+  }
+
+  .subsection-title {
+    font-size: 1.25rem;
+  }
+
+  .songs-table,
+  .dialogue-table {
+    min-width: 680px;
+  }
+
+/* back button responsive so it doesnt hide overview button*/
+   .grey-container-back {
+    position: static;
+    margin: 20px auto;
+  }
+
+}
+
+
+.grey-container-back{
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 30px;
+  background: grey;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+    text-decoration: none;
+}
+
+.grey-container-back:hover{
+  background-color: rgb(226, 226, 226);
+  transition: 0.2s ease;
+    text-decoration: none;
+}
+    
