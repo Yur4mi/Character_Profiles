@@ -1,91 +1,290 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selection | Character Wiki</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style_char_select.css">
-</head>
-<body>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.character-list {
+    padding: 35px 40px;
+    height: calc(100% - 90px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 420px;
+    gap: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* background: white; */
+    /*PEAK Background*/
+    background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.Jzgj5yQoqZOhQB4LFdxA1gHaHa%3Fr%3D0%26pid%3DApi&f=1&ipt=f3e544e0fe7fe65405e03143f51e878da1ef02d9b58b16f15971d8880f79504b");
+background-repeat: repeat;
+background-attachment: scroll;
+}
 
 
 
-<div class="striped-bg">
+.character-card {
+    position: relative;
+    width: min(85vw, 320px);
+    height: 420px;
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+    border-radius: 25px;
+    background: #ffffff;
 
-<div class="character-list">
+    /* This is important */
+    isolation: isolate;
+    transition: ease 0.5s;
+}
 
+.character-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 25px;
+    z-index: 2;
+}
+
+.character-content img {
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 40px;
+    transition: transform 0.5s ease;
+}
+
+.character-name {
+    position: relative;
+
+    color: #222;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    transition:
+        color 0.4s ease,
+        text-shadow 0.4s ease,
+        transform 0.4s ease;
+}
+
+/* ------------------------------ CUSTOM COLORS----------------------------------- */
+
+.character-dylan .liquid {
+    background: #ff990a;
+}
+
+.character-finn .liquid {
+    background: #8400ff;
+}
+
+
+.character-test .liquid {
+    background: blue;
+}
+
+.character-test2 .liquid {
+    background: #75e200;
+}
+
+.character-test3 .liquid {
+    background: #ff0073;
+}
+
+.character-test4 .liquid {
+    background: #4c00ff;
+}
+
+/* ------------------------------ CUSTOM COLORS--------------------------------- */
+
+
+
+.character-card .liquid {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translateX(-50%);
+    transition: top 0.6s ease;
+    z-index: 1;
+}
+
+.character-card .liquid::before,
+.character-card .liquid::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    border-radius: 48% 52% 50% 50%;
+}
+
+.character-card .liquid::before {
+        background: rgba(255, 255, 255, 0.35);
+    animation: animate 10s linear infinite;
+}
+
+.character-card .liquid::after {
+      background: rgba(255, 255, 255, 0.15);
+    animation: animate 15s linear infinite;
+}
+
+.character-card:hover .liquid {
+    top: 0%;
+}
+
+
+.character-card:hover{
     
+    --accent: white;
+     transform: scale(1.045);
 
-<!------------------ CHARACTER 1 --------------------->
+    border-color: var(--accent);
 
-<a href="index_finn.html" class="character-card character-finn">
+    box-shadow:
+        0 0 8px var(--accent),
+        0 0 20px var(--accent),
+        0 0 35px color-mix(
+            in srgb,
+            var(--accent) 55%,
+            transparent
+        );
+transition: ease 0.5s;
+    z-index: 10;
 
-    <div class="character-content">
-        <img src="Images/Icon Finn.png" alt="Finn">
-        <span class="character-name">Finn</span>
-    </div>
-    <div class="liquid"></div>
-</a>
-
-<!------------------ CHARACTER 2 --------------------->
-
-<a href="index_dylan.html" class="character-card character-dylan">
-
-    <div class="character-content">
-        <img src="Images/Icon Dylan.png" alt="Dylan">
-        <span class="character-name">Dylan</span>
-    </div>
-    <div class="liquid"></div>
-</a>
+}
 
 
-<!---------------------------------------
+.character-card:hover .character-name {
+    color: white;
 
-<a href="#" class="character-card character-test">
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.8),
+        0 0 15px rgba(255,255,255,0.6),
+        0 0 30px rgba(255,255,255,0.4);
 
-    <div class="character-content">
-        <img src="Images/placeholder.png" alt="UNDER_CONSTRUCTION">
-        <span class="character-name">???</span>
-    </div>
-    <div class="liquid"></div>
-</a>
+    transform: translateY(-3px);
+}
 
+.character-card:hover img {
+    transform: scale(1.03);
+}
 
-<a href="#" class="character-card character-test2">
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -75%) rotate(0deg);
+    }
 
-    <div class="character-content">
-        <img src="Images/placeholder.png" alt="UNDER_CONSTRUCTION">
-        <span class="character-name">???</span>
-    </div>
-    <div class="liquid"></div>
-</a>
-
-
-<a href="#" class="character-card character-test3">
-
-    <div class="character-content">
-        <img src="Images/placeholder.png" alt="UNDER_CONSTRUCTION">
-        <span class="character-name">???</span>
-    </div>
-    <div class="liquid"></div>
-</a>
-
-<a href="#" class="character-card character-test4">
-
-    <div class="character-content">
-        <img src="Images/placeholder.png" alt="UNDER_CONSTRUCTION">
-        <span class="character-name">???</span>
-    </div>
-    <div class="liquid"></div>
-</a>
-
---------------------------------------------->
-
-</div>
-</div>
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
 
 
 
-</body>
-</html>
+@-webkit-keyframes MOVE-BG {
+	from {
+		-webkit-transform: translateX(0);
+	}
+	to { 
+		-webkit-transform: translateX(46px);
+	}
+}
+
+@keyframes MOVE-BG {
+	from {
+		transform: translateX(0);
+	}
+	to { 
+		transform: translateX(46px);
+	}
+}
+
+
+
+.striped-bg{
+    padding: 40px;
+    background-color: lightgrey;
+   background-image:
+        repeating-linear-gradient(
+            55deg,
+            rgba(255, 255, 255, 0.25) 0px,
+            rgba(255, 255, 255, 0.25) 18px,
+            rgba(0, 0, 0, 0.04) 18px,
+            rgba(0, 0, 0, 0.04) 36px
+        );
+
+    animation: moving-background 18s linear infinite;
+    border-radius: 20px;
+}
+
+
+/* Moving background stripes */
+
+@keyframes moving-background {
+
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 300px 0;
+    }
+}
+
+
+
+
+
+
+/* ----------- MOBILE ------------------ */
+
+
+@media (max-width: 700px) {
+
+    body {
+        min-height: 100vh;
+        padding: 10px;
+    }
+
+    .striped-bg {
+        width: 100%;
+        height: calc(100vh - 20px);
+        padding: 20px 10px;
+        border-radius: 15px;
+    }
+
+    .character-list {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 10px 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .character-card {
+        width: min(85vw, 320px);
+        height: 420px;
+        flex-shrink: 0;
+    }
+}
