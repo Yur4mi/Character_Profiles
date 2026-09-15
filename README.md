@@ -1,8 +1,9 @@
 # Character_Profiles
-Character Profiles in the style of a wiki page
+Splatoon oc Profiles in the style of a wiki page
 
-#Work in progress
+-----------------
+Not 100% finished - Work in progress
 
-- character selection screen needs polishing and may be updated in future with more characters
-- audio and images are not created yet
-- most likely spelling mistakes occuring in the large paragraphs 
+Notice:
+- audio and several images are not created yet (especially in the story and gallery section)
+- most likely spelling mistakes occuring in the large paragraphs of profiles
